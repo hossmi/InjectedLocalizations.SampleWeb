@@ -1,10 +1,30 @@
 ﻿@page
+@using Microsoft.AspNetCore.Localization
 @model IndexModel
 @{
+    IReadOnlyCollection<SelectListItem> selectItems;
+
+    selectItems = this.Model
+        .SupportedCultures
+        .Select(c => new SelectListItem { Text = c.DisplayName, Value = c.Name })
+        .Concat(new[] { new SelectListItem { Text = "", Value = "" }})
+        .OrderBy(i => i.Text)
+        .ToList();
+    
     ViewData["Title"] = "Home page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    
+    <p>Current culture: @this.Model.RequestCulture.Name</p>
+
+    <form id="selectLanguage"
+        method="get">
+        <select 
+            name="culture"
+            onchange="this.form.submit()"
+            asp-items="selectItems" ></select>
+    </form>
 </div>
