@@ -22,8 +22,8 @@ namespace SampleWeb
         public Startup(IConfiguration configuration)
         {
             this.Configuration = configuration;
-            this.defaultCulture = new CultureInfo("en-US"); //TODO get from configuration
-            this.availableCultures = new[] // TODO get from configuration
+            this.defaultCulture = new CultureInfo("en-US"); //TODO get it from configuration file, please
+            this.availableCultures = new[] // TODO get it from configuration file, please
             {
                 "en-US",
                 "es-ES",
