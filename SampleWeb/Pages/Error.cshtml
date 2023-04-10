@@ -1,20 +1,21 @@
 ﻿@page
 @model ErrorModel
+@inject IErrorsLocalizations localizations;
 @{
-    ViewData["Title"] = "Error";
+    ViewData["Title"] = localizations.Error;
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<h1 class="text-danger">@localizations.Error.</h1>
+<h2 class="text-danger">@localizations.An_error_occurred_while_processing_your_request.</h2>
 
 @if (Model.ShowRequestId)
 {
     <p>
-        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+        <strong>@localizations.Request_Id:</strong> <code>@Model.RequestId</code>
     </p>
 }
 
-<h3>Development Mode</h3>
+<h3>@localizations.Development_mode</h3>
 <p>
     Swapping to the <strong>Development</strong> environment displays detailed information about the error that occurred.
 </p>
