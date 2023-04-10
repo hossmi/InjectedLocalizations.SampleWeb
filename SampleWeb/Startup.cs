@@ -42,6 +42,18 @@ namespace SampleWeb
                 options.AddSupportedCultures(this.availableCultures);
                 options.AddSupportedUICultures(this.availableCultures);
             });
+
+            services.AddInterfacedLocalizations(configure =>
+            {
+                configure.SetCulture(this.defaultCulture, true);
+
+                this.availableCultures
+                    .Skip(1)
+                    .Select(c => new CultureInfo(c))
+                    .ToList()
+                    .ForEach(c => configure.SetCulture(c));
+
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
