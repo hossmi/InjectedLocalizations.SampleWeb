@@ -1,6 +1,6 @@
 ﻿using InjectedLocalizations;
 
-namespace SampleWeb.Pages
+namespace SampleWeb.Localizations
 {
     public interface IErrorsLocalizations : ILocalizations
     {

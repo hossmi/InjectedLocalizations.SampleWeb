@@ -1,6 +1,6 @@
 ﻿@page
 @using Microsoft.AspNetCore.Localization
-@using SampleWeb.Services.Localizations
+@using SampleWeb.Localizations
 @model IndexModel
 @inject IIndexLocalizations strings;
 @{
@@ -18,7 +18,7 @@
 
 <div class="text-center">
     <h1 class="display-4">@this.strings.Welcome</h1>
-    <p>@strings.Learn_about <a href="https://docs.microsoft.com/aspnet/core">@strings.building_Web_apps_with_Asp_Net_Core</a>.</p>
+    <p>@strings.Learn_about <a href="https://docs.microsoft.com/aspnet/core">@strings.Building_Web_apps_with_Asp_Net_Core</a>.</p>
     
     <p>@strings.Current_culture: @this.Model.RequestCulture.Name</p>
 
