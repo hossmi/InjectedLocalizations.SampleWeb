@@ -35,7 +35,7 @@ namespace SampleWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-
+            services.AddHttpContextAccessor();
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 options.DefaultRequestCulture = new RequestCulture(this.defaultCulture);
@@ -53,6 +53,7 @@ namespace SampleWeb
                     .ToList()
                     .ForEach(c => configure.SetCulture(c));
 
+                configure.SetHttpContextCurrentCultureProvider();
             });
         }
 

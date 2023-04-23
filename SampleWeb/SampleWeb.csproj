@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="InjectedLocalizations" Version="0.0.8" />
+    <PackageReference Include="InjectedLocalizations.Providers.HttpContextCurrentCulture" Version="0.0.7" />
   </ItemGroup>
 
 </Project>
