@@ -54,6 +54,7 @@ namespace SampleWeb
                     .ForEach(c => configure.SetCulture(c));
 
                 configure.SetHttpContextCurrentCultureProvider();
+                configure.UseConcreteProvider();
             });
         }
 
