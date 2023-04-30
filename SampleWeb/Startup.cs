@@ -43,15 +43,11 @@ namespace SampleWeb
                 options.AddSupportedUICultures(this.availableCultures);
             });
 
-            services.AddInterfacedLocalizations(configure =>
+            services.AddInjectedLocalizations(configure =>
             {
-                configure.SetCulture(this.defaultCulture, true);
-
-                this.availableCultures
-                    .Skip(1)
+                configure.SetCultures(this.defaultCulture, this.availableCultures
                     .Select(c => new CultureInfo(c))
-                    .ToList()
-                    .ForEach(c => configure.SetCulture(c));
+                    .ToArray());
 
                 configure.SetHttpContextCurrentCultureProvider();
             });
