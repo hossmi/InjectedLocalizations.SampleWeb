@@ -33,6 +33,8 @@ namespace SampleWeb
         }
 
         public IConfiguration Configuration { get; }
+        public string DeepLApiKey => throw new ArgumentNullException("Put your api key here");
+        public string DeepLUrl => throw new ArgumentNullException("Put your url here");
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -50,6 +52,19 @@ namespace SampleWeb
                 configure.GetCulturesFromRequestLocalizationsOptions();
                 configure.SetHttpContextCurrentCultureProvider();
                 configure.UseConcreteProvider();
+                configure.UseDeepLProvider(90, options =>
+                {
+                    options.Url = this.DeepLUrl;
+                    options.ApiKey = this.DeepLApiKey;
+
+                    options.TargetCultureMap = new Dictionary<CultureInfo, string>
+                    {
+                        { new CultureInfo("en-US"), "EN-US" },
+                        { new CultureInfo("it-IT"), "IT" },
+                        { new CultureInfo("de-DE"), "DE" },
+                        { new CultureInfo("es-ES"), "ES" },
+                    };
+                });
             });
         }
 
