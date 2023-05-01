@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="InjectedLocalizations" Version="0.0.9" />
     <PackageReference Include="InjectedLocalizations.Providers.ConcreteLocalizationsProvider" Version="0.0.6" />
+    <PackageReference Include="InjectedLocalizations.Providers.DeepL" Version="0.0.4" />
     <PackageReference Include="InjectedLocalizations.Providers.HttpContextCurrentCulture" Version="0.0.8" />
   </ItemGroup>
 
