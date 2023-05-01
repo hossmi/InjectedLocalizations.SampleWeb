@@ -27,6 +27,8 @@ namespace SampleWeb
             {
                 "en-US",
                 "es-ES",
+                "it-IT",
+                "de-DE",
             };
         }
 
