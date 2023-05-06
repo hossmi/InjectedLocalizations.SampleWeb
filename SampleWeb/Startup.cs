@@ -17,17 +17,19 @@ namespace SampleWeb
     public class Startup
     {
         private readonly CultureInfo defaultCulture;
-        private readonly string[] availableCultures;
+        private readonly CultureInfo[] availableCultures;
+        private readonly string[] availableCulturesNames;
 
         public Startup(IConfiguration configuration)
         {
             this.Configuration = configuration;
-            this.defaultCulture = new CultureInfo("en-US"); //TODO get it from configuration file, please
-            this.availableCultures = new[] // TODO get it from configuration file, please
+            this.defaultCulture = new CultureInfo("en-US");
+            this.availableCultures = new[]
             {
-                "en-US",
-                "es-ES",
+                new CultureInfo("en-US"),
+                new CultureInfo("es-ES"),
             };
+            this.availableCulturesNames = this.availableCultures.Select(c => c.Name).ToArray();
         }
 
         public IConfiguration Configuration { get; }
@@ -39,8 +41,8 @@ namespace SampleWeb
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 options.DefaultRequestCulture = new RequestCulture(this.defaultCulture);
-                options.AddSupportedCultures(this.availableCultures);
-                options.AddSupportedUICultures(this.availableCultures);
+                options.AddSupportedCultures(this.availableCulturesNames);
+                options.AddSupportedUICultures(this.availableCulturesNames);
             });
         }
 
