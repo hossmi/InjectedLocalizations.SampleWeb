@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Options;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 
 namespace SampleWeb.Pages
 {

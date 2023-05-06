@@ -22,9 +22,6 @@
     
     <p>@strings.Current_culture: @this.Model.RequestCulture.Name</p>
 
-@*        asp-controller="Index"
-        asp-action="SetLanguage"
-        asp-route-returnUrl="@this.HttpContext.Request.Path" *@
     <form
         id="selectLanguage" 
         method="get">
@@ -33,5 +30,4 @@
             onchange="this.form.submit()"
             asp-items="selectItems"></select>
     </form>
-    @* asp-for="@this.Model.RequestCulture.Name" *@
 </div>
