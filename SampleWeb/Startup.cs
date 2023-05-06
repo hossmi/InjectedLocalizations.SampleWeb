@@ -17,19 +17,23 @@ namespace SampleWeb
     public class Startup
     {
         private readonly CultureInfo defaultCulture;
-        private readonly string[] availableCultures;
+        private readonly IReadOnlyDictionary<CultureInfo, string> availableCultures;
+        private readonly string[] availableCulturesNames;
 
         public Startup(IConfiguration configuration)
         {
             this.Configuration = configuration;
-            this.defaultCulture = new CultureInfo("en-US"); //TODO get it from configuration file, please
-            this.availableCultures = new[] // TODO get it from configuration file, please
+            this.defaultCulture = new CultureInfo("en-US");
+            this.availableCultures = new Dictionary<CultureInfo, string>
             {
-                "en-US",
-                "es-ES",
-                "it-IT",
-                "de-DE",
+                { this.defaultCulture, "EN-US" },
+                { new CultureInfo("es-ES"), "ES" },
+                { new CultureInfo("it-IT"), "IT" },
+                { new CultureInfo("de-DE"), "DE" },
             };
+            this.availableCulturesNames = this.availableCultures
+                .Select(c => c.Key.Name)
+                .ToArray();
         }
 
         public IConfiguration Configuration { get; }
@@ -43,8 +47,8 @@ namespace SampleWeb
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 options.DefaultRequestCulture = new RequestCulture(this.defaultCulture);
-                options.AddSupportedCultures(this.availableCultures);
-                options.AddSupportedUICultures(this.availableCultures);
+                options.AddSupportedCultures(this.availableCulturesNames);
+                options.AddSupportedUICultures(this.availableCulturesNames);
             });
 
             services.AddInjectedLocalizations(configure =>
@@ -56,14 +60,7 @@ namespace SampleWeb
                 {
                     options.Url = this.DeepLUrl;
                     options.ApiKey = this.DeepLApiKey;
-
-                    options.TargetCultureMap = new Dictionary<CultureInfo, string>
-                    {
-                        { new CultureInfo("en-US"), "EN-US" },
-                        { new CultureInfo("it-IT"), "IT" },
-                        { new CultureInfo("de-DE"), "DE" },
-                        { new CultureInfo("es-ES"), "ES" },
-                    };
+                    options.TargetCultureMap = this.availableCultures;
                 });
             });
         }
