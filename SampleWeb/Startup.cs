@@ -26,8 +26,10 @@ namespace SampleWeb
             this.defaultCulture = new CultureInfo("en-US");
             this.availableCultures = new[]
             {
-                new CultureInfo("en-US"),
+                this.defaultCulture,
                 new CultureInfo("es-ES"),
+                new CultureInfo("it-IT"),
+                new CultureInfo("de-DE"),
             };
             this.availableCulturesNames = this.availableCultures.Select(c => c.Name).ToArray();
         }
