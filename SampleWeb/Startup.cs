@@ -49,9 +49,7 @@ namespace SampleWeb
 
             services.AddInjectedLocalizations(configure =>
             {
-                configure.SetCultures(this.defaultCulture, this.availableCultures
-                    .Select(c => new CultureInfo(c))
-                    .ToArray());
+                configure.SetCultures(this.defaultCulture, this.availableCultures);
             });
         }
 
